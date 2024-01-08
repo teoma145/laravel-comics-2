@@ -10,10 +10,10 @@
           <div class="d-flex">
             <div class="col-4">
                 <div class="card">
-                    <img src="{{$comic['thumb']}}" alt="{{$comic['title']}}" class="card-img-top">
+                    <img src="{{$comic->thumb}}" alt="{{$comic->title}}" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">{{$comic['price']}}</h5>
-                        <p class="card-text">{!! $comic['description'] !!}</p>
+                        <h5 class="card-title">{{$comic->price}}</h5>
+                        <p class="card-text">{!! $comic->description !!}</p>
 
                     </div>
                 </div>

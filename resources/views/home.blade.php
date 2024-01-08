@@ -20,7 +20,7 @@
             </div>
             @endforeach
         </div>
-
+        <button class="mt-4 btn bg-danger text-white"><a href="{{route('comics.create')}}">Aggiungi fumetto</a></button>
     </section>
  </main>
  @include('../layouts.partials.merch')

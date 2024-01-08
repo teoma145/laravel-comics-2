@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ComicController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,21 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $comics = config('db.comics');
-    return view('home',compact('comics'));
-})->name('home');
-Route::get('/comics/{id}', function ($id) {
-    $comics = config('db.comics');
-    //cercare prodotto con quell'id
-    if ($id >= 0 && $id < count($comics)) {
-        $comic = $comics[$id];
+ Route::get('/', function () {
 
-        return view('comics.show', compact('comic'));
-    } else {
-        abort(404);
-    }
-})->name('comics.show');
+    return to_route('comics.index');
+})->name('home');
+
+
+//Route::get('/comics/{id}', function ($id) {
+ //   $comics = config('db.comics');
+    //cercare prodotto con quell'id
+   // if ($id >= 0 && $id < count($comics)) {
+     //   $comic = $comics[$id];
+
+       // return view('comics.show', compact('comic'));
+    //} else {
+      //  abort(404);
+    //}
+//})->name('comics.show');
+
+Route::resource('comics',ComicController::class);
 
 Route::get('about', function () {
     return view('about.index');

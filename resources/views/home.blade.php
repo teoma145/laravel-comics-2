@@ -20,7 +20,11 @@
                 </div>
                 <h5 class="card-title text-white  fs-6">{{$comic->name}}</h5>
                 <a href="{{route('comics.show',$comic->id)}}" class="btn btn-primary">Vedi dettaglio</a>
-
+                <form action="{{route('comics.destroy',$comic->id)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Elimina</button>
+                </form>
 
             </div>
             @endforeach

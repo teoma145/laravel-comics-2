@@ -17,6 +17,7 @@
 
                     </div>
                 </div>
+                <a href="{{route('comics.edit', $comic->id)}}" class="btn btn-primary">modifica prodotto</a>
             </div>
             <div class="align-self-center ">
                 <h1>acquista ora</h1>

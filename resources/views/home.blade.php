@@ -10,6 +10,9 @@
         </div>
 
         <div class="row">
+            @if (session()->has('message'))
+            <div class="alert alert-danger">{{session('message')}}</div>
+            @endif
             @foreach ($comics as $key=>$comic)
             <div class="col-12 col-md-4  col-lg-2 mt-5">
                 <div class="cards">
@@ -17,6 +20,8 @@
                 </div>
                 <h5 class="card-title text-white  fs-6">{{$comic->name}}</h5>
                 <a href="{{route('comics.show',$comic->id)}}" class="btn btn-primary">Vedi dettaglio</a>
+
+
             </div>
             @endforeach
         </div>

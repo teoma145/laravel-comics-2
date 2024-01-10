@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\StoreComicRequest;
+use App\Http\Requests\UpdateComicRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -38,18 +41,13 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
-            $formData = $request->all();
-            $new_comic= new Comic();
-            $new_comic->name=$formData['title'];
-            $new_comic->description=$formData['description'];
-            $new_comic->price=$formData['price'];
-            $new_comic->sale_date=$formData['sales_date'];
-            $new_comic->series=$formData['series'];
-            $new_comic->type=$formData['type'];
-            $new_comic->save();
-            return to_route('comics.index');
+        $formData = $request->validated();
+        $formData['sale_date'] = now();
+        $newcomic = Comic::create($formData);
+
+        return to_route('comics.show', $newcomic->id);
     }
 
     /**
@@ -81,15 +79,10 @@ class ComicController extends Controller
      * @param  \App\Models\Comic  $comic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(UpdateComicRequest $request, Comic $comic)
     {
-        $formData = $request->all();
-        $comic->name=$formData['title'];
-        $comic->description=$formData['description'];
-        $comic->price=$formData['price'];
-        $comic->sale_date=$formData['sales_date'];
-        $comic->series=$formData['series'];
-        $comic->type=$formData['type'];
+        $formData = $request->validated();
+        $comic->fill($formData);
         $comic->update();
         return to_route('comics.show', $comic->id);
     }
@@ -105,5 +98,9 @@ class ComicController extends Controller
         $comic->delete();
         return to_route('comics.index')->with('message','il prodotto è stato eliminato');
 
+
     }
+
+
+
 }

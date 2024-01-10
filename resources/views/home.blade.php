@@ -23,13 +23,19 @@
                 <form action="{{route('comics.destroy',$comic->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Elimina</button>
+                    <button type="submit" class=".cancel-button btn btn-danger">Elimina {{$comic->title}}</button>
+
                 </form>
 
             </div>
             @endforeach
         </div>
-        <button class="mt-4 btn bg-danger text-white"><a href="{{route('comics.create')}}">Aggiungi fumetto</a></button>
+        <div>
+            <button class="mt-4 btn bg-danger text-white"><a href="{{route('comics.create')}}">Aggiungi fumetto</a></button>
+            <form action="{{route('comics.index')}}" method="GET">
+            <select name="" id=""></select>
+            </form>
+        </div>
     </section>
  </main>
  @include('../layouts.partials.merch')
@@ -88,4 +94,6 @@
     </div>
 
   </div>
+  @include('layouts.partials.modal_delete')
 @endsection
+

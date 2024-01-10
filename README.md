@@ -77,5 +77,10 @@ php artisan make:controller NomeController
 
 
 # creo le views relative
-php artisan make:model Comic -rcms crea
-Resource Model Controller e Seeder insieme
+php artisan make:model Comic -rcms --request 
+crea Resource Model Controller e Seeder e form request per validazioni insieme
+
+# creo form request per validazione 
+
+php artisan make:request StoreComicRequest
+php artisan make:request UpdateComicRequest

@@ -42,7 +42,7 @@ class StoreComicRequest extends FormRequest
             'name.max'=>'Il titolo deve essere di :max caratteri',
             'type.required' => 'Il tipo è obbligatorio.',
             'type.max' => 'Il tipo non può superare i :max caratteri.',
-            'sale_date.max' => 'La data è obbligatorio.',
+            'sale_date.max' => 'La data è sbagliata.',
             'price.max' => 'Il prezzo non può superare i :max caratteri.',
             'series' => 'La serie è obbligatoria.',
 

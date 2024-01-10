@@ -15,7 +15,7 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         <input type="text" id="type" name="type" placeholder="inserisci tipo" class="form-control ">
-        <input type="text" id="sales_date" name="sales_date" placeholder="inserisci data" class="form-control  @error('sale_date') is-invalid @enderror">
+        <input type="text" id="sale_date" name="sale_date" placeholder="inserisci data" class="form-control  @error('sale_date') is-invalid @enderror">
             @error('sale_date')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror

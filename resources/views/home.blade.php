@@ -8,11 +8,17 @@
         <div class="bg-info currentser">
             <h3 class="text-white fs-4">CURRENT SERIES</h3>
         </div>
-
+        <div class="d-flex justify-content-center" >
+            <form class="ms-5" action="{{route('comics.index')}}" method="GET">
+             <input type="text" name="search" id="search" placeholder="cerca">
+             <button type="submit" class="btn btn-danger ms-3">Cerca</button>
+            </form>
+        </div>
         <div class="row">
             @if (session()->has('message'))
             <div class="alert alert-danger">{{session('message')}}</div>
             @endif
+
             @foreach ($comics as $key=>$comic)
             <div class="col-12 col-md-4  col-lg-2 mt-5">
                 <div class="cards">
@@ -23,7 +29,7 @@
                 <form action="{{route('comics.destroy',$comic->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class=".cancel-button btn btn-danger">Elimina {{$comic->title}}</button>
+                    <button type="submit" class="cancel-button btn btn-danger" data-item-title="{{$comic->title}}"> Elimina {{$comic->title}}</button>
 
                 </form>
 
